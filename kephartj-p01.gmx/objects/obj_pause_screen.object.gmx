@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-3000</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -51,8 +51,7 @@ paused = 0;  // Not paused
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Onscreen feedback
-
+            <string>
 if(paused)
 {
     // Draw the screen
@@ -61,6 +60,7 @@ if(paused)
     
     // Draw text
     draw_set_halign(fa_center); // Center text
+    draw_set_valign(fa_middle); // Center text
     draw_set_font(fnt_menu_options);
     draw_set_color(c_white);
     
@@ -101,6 +101,7 @@ else
 {
     paused = 0; // Not paused
     instance_activate_all();
+    instance_deactivate_object(template_enemy);
     draw_set_alpha(1);
 }
 </string>

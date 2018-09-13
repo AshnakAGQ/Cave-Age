@@ -3,7 +3,7 @@
   <spriteName>spr_cursor</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-5000</depth>
+  <depth>-4000</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,12 +25,77 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = mouse_x;
-y = mouse_y;
-window_mouse_set(window_get_width() / 2, window_get_height() / 2);
-ox = view_xview + view_wview / 2;
-oy = view_yview + view_hview / 2;
+            <string>window_mouse_set(window_get_width() / 2, window_get_height() / 2);
 
+global.mx = view_xview + view_wview / 2;
+global.my = view_yview + view_hview / 2;
+
+temp_x = global.mx;
+temp_y = global.my;
+
+xview = view_xview;
+yview = view_yview;
+
+stop = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.mx = temp_x;
+global.my = temp_y;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// React to death
+
+ini_open("checkpoint.ini");
+
+if (ini_read_real("Cursor", "death", 0))
+{
+    ini_write_real("Cursor", "death", 0)
+    global.mx = ini_read_real("Cursor", "mx", global.mx);
+    global.my = ini_read_real("Cursor", "my", global.my);
+    score = ini_read_real("Death Data", "score", score - 500);
+    stop = false;
+}
+ini_close();
 </string>
           </argument>
         </arguments>
@@ -53,11 +118,110 @@ oy = view_yview + view_hview / 2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = clamp(x + mouse_x - ox, view_xview, view_xview + view_wview);
-y = clamp(y + mouse_y - oy, view_yview, view_yview + view_hview);
+            <string>/// Test for ini file
+
+ini_open("checkpoint.ini");
+
+if (ini_read_real("Cursor", "death", 0) &amp;&amp; !stop)
+{
+    alarm[0] = 1;
+    stop = true;
+}
+ini_close();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.mx = clamp(global.mx + mouse_x - (view_xview + view_wview / 2), 0, view_wview);
+global.my = clamp(global.my + mouse_y - (view_yview + view_hview / 2), 0, view_hview);
+
+x = view_xview + global.mx;
+y = view_yview + global.my;
+
 window_mouse_set(window_get_width() / 2, window_get_height() / 2);
-ox = view_xview + view_wview / 2;
-oy = view_yview + view_hview / 2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>temp_x = global.mx;
+temp_y = global.my;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>alarm[1] = 4;
 
 </string>
           </argument>

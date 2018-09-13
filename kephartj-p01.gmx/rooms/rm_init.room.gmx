@@ -12,12 +12,28 @@
   <showcolour>-1</showcolour>
   <code>/// Setup global variables
 
+with (all) instance_destroy();
+
+instance_create(0, 0, obj_init);
+
 global.checkpoint = noone;  // This zeroes out potential data; "checkpoint variable will hold instance ID
 global.checkpoint_r = 0;    // Which room is the checkpoint in?
+global.loadid = 0;
+
+global.mx = 0;
+global.my = 0;
 
 // Start BG Music
+
 if (!audio_is_playing(snd_bg_music)){audio_play_sound(snd_bg_music, 0, true);}
-sound_volume(snd_bg_music, .8);
+audio_sound_gain(snd_bg_music, 0.5, 0);
+
+
+
+score = 0;
+global.score_temp = 0;
+global.Name = "";
+
 
 room_goto_next();   // Automatically progress to next room</code>
   <enableViews>0</enableViews>

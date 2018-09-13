@@ -11,6 +11,20 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -26,26 +40,23 @@
           <argument>
             <kind>1</kind>
             <string>/// Initialize Enemy variables
-
-dir = -1;   // Enemy defaults to moving left
-spd = 3;    // Default horizontal speed
+image_speed = .1;
+dir = -image_xscale;   // Enemy defaults to moving left
+spd = 2;    // Default horizontal speed
 grav = 1;   // Gravity work the same for enemies
 hspd = 0;   // Default stopped
 vspd = 0;   // Default stopped
 
 // Ledge logic
-avoid_ledges = false; 
+avoid_ledges = true; 
 under_enemy = 8; // Amount of pixels to check under object
 killable = true; // Ability to be destroyed
 
-avoid_ledges = true;
-killable = true;
 onGround = -1;
-spd = 2;
 onCeiling = -1;
 onLeft = -1;
 onRight = -1;
-dir = -1
+
 width = bbox_top - bbox_bottom;
 length = bbox_right - bbox_left;
 </string>
@@ -70,7 +81,7 @@ length = bbox_right - bbox_left;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (onCeiling &amp;&amp; (obj_player.x - x) &lt; length &amp;&amp; y &lt; obj_player.y) scr_fix_crawler();
+            <string>if (onCeiling &amp;&amp; abs(obj_player.x - x) &lt; length &amp;&amp; y &lt; obj_player.y) scr_fix_crawler();
 
 /// Enemy movement
 var vertical = onLeft || onRight;

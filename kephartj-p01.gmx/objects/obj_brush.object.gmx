@@ -3,7 +3,7 @@
   <spriteName>spr_brush</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1000</depth>
   <persistent>0</persistent>
   <parentName>obj_ground</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>onFire = 0;
-depth = -1000
 </string>
           </argument>
         </arguments>
@@ -89,7 +88,7 @@ if (onFire == 0)
     if (byFire)
     {
         onFire = -1;
-        alarm[0] = 15;
+        alarm[0] = 12.5;
     }
     if (byTorch)
     {
@@ -108,7 +107,7 @@ if (onFire &gt; 0)
     onFire++;
 }
 
-if (onFire &gt; 150)
+if (onFire &gt; 125)
 {
     instance_destroy();
 }

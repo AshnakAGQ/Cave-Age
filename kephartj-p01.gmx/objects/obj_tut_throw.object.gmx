@@ -3,9 +3,9 @@
   <spriteName>spr_tut_throw</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>2000</depth>
   <persistent>0</persistent>
-  <parentName>template_tutorial</parentName>
+  <parentName>template_background</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events/>
   <PhysicsObject>0</PhysicsObject>

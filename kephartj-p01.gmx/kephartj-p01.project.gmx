@@ -15,8 +15,13 @@
   <sprites name="sprites">
     <sprites name="Unused Assets">
       <sprites name="Old Assets">
-        <sprite>sprites\spr_dave</sprite>
         <sprite>sprites\spr_walljump</sprite>
+        <sprite>sprites\spr_player_tar</sprite>
+        <sprite>sprites\spr_player_wall</sprite>
+        <sprite>sprites\spr_player_jump</sprite>
+        <sprite>sprites\spr_player_run</sprite>
+        <sprite>sprites\spr_player_idle</sprite>
+        <sprite>sprites\spr_player_spear</sprite>
         <sprite>sprites\spr_spear</sprite>
         <sprite>sprites\spr_fall</sprite>
         <sprite>sprites\w</sprite>
@@ -41,6 +46,7 @@
         <sprite>sprites\spr_tut_throw</sprite>
         <sprite>sprites\spr_tut_run</sprite>
         <sprite>sprites\spr_tut_mouse</sprite>
+        <sprite>sprites\spr_victory</sprite>
         <sprite>sprites\spr_tut_spacebar</sprite>
         <sprite>sprites\spr_tut_WASD</sprite>
         <sprite>sprites\spr_tut_S</sprite>
@@ -56,16 +62,22 @@
       <sprite>sprites\spr_exit</sprite>
     </sprites>
     <sprites name="Entities">
+      <sprites name="spr_dave">
+        <sprite>sprites\spr_dave_idle</sprite>
+        <sprite>sprites\spr_dave_idle_spear</sprite>
+        <sprite>sprites\spr_dave_tar</sprite>
+        <sprite>sprites\spr_dave_wall</sprite>
+        <sprite>sprites\spr_dave_wall_spear</sprite>
+        <sprite>sprites\spr_dave_run</sprite>
+        <sprite>sprites\spr_dave_run_spear</sprite>
+        <sprite>sprites\spr_dave_jump</sprite>
+        <sprite>sprites\spr_dave_jump_spear</sprite>
+      </sprites>
       <sprite>sprites\spr_boulder</sprite>
-      <sprite>sprites\spr_player_tar</sprite>
-      <sprite>sprites\spr_player_spear</sprite>
       <sprite>sprites\spr_bat</sprite>
-      <sprite>sprites\spr_player_wall</sprite>
-      <sprite>sprites\spr_player_idle</sprite>
       <sprite>sprites\spr_bug</sprite>
-      <sprite>sprites\spr_player_run</sprite>
+      <sprite>sprites\bug_back</sprite>
       <sprite>sprites\spr_projectile</sprite>
-      <sprite>sprites\spr_player_jump</sprite>
     </sprites>
     <sprites name="Powerups">
       <sprite>sprites\spr_power_torch</sprite>
@@ -75,13 +87,15 @@
     <sprites name="Special">
       <sprite>sprites\spr_checkpoint</sprite>
       <sprite>sprites\spr_replay</sprite>
-      <sprite>sprites\spr_credits</sprite>
+      <sprite>sprites\spr_title</sprite>
       <sprite>sprites\spr_proj_aim</sprite>
       <sprite>sprites\spr_test</sprite>
       <sprite>sprites\spr_spear_cursor</sprite>
       <sprite>sprites\spr_cursor</sprite>
+      <sprite>sprites\spr_cursor_spear</sprite>
       <sprite>sprites\spr_menu_cursor</sprite>
     </sprites>
+    <sprite>sprites\spr_tut_fullscreen</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_stone</background>
@@ -89,11 +103,13 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_menu.gml</script>
+    <script>scripts\scr_credits.gml</script>
     <script>scripts\scr_death.gml</script>
     <script>scripts\scr_fix_crawler.gml</script>
     <script>scripts\scr_sprite_direction.gml</script>
   </scripts>
   <fonts name="fonts">
+    <font>fonts\fnt_high_scores</font>
     <font>fonts\fnt_menu_options</font>
   </fonts>
   <objects name="objects">
@@ -104,19 +120,20 @@
       <object>objects\obj_torch</object>
     </objects>
     <objects name="Entities">
-      <object>objects\obj_bat</object>
       <object>objects\template_enemy</object>
+      <object>objects\obj_bat</object>
       <object>objects\obj_crawler</object>
       <object>objects\obj_boulder</object>
-      <object>objects\obj_projectile</object>
       <object>objects\obj_player</object>
     </objects>
     <objects name="Terrain">
       <objects name="Background">
-        <object>objects\template_tutorial</object>
+        <object>objects\template_background</object>
         <object>objects\obj_tut_fire</object>
+        <object>objects\obj_fullscreen</object>
         <object>objects\obj_tut_throw</object>
         <object>objects\obj_tut_S</object>
+        <object>objects\obj_victory</object>
         <object>objects\obj_tut_fall</object>
         <object>objects\obj_tut_jump</object>
         <object>objects\obj_tut_spacebar</object>
@@ -124,31 +141,34 @@
         <object>objects\obj_tut_WASD</object>
         <object>objects\obj_tut_run</object>
         <object>objects\obj_entrance</object>
-        <object>objects\obj_wall</object>
         <object>objects\obj_exit</object>
+        <object>objects\obj_wall</object>
       </objects>
       <objects name="Hazard">
         <object>objects\obj_tar</object>
         <object>objects\obj_tar2</object>
       </objects>
       <objects name="Platforms">
+        <object>objects\obj_platform</object>
         <object>objects\template_wall</object>
+        <object>objects\obj_ground</object>
         <object>objects\obj_brush</object>
         <object>objects\obj_brush_fire</object>
-        <object>objects\obj_platform</object>
-        <object>objects\obj_ground</object>
       </objects>
     </objects>
     <objects name="Special">
-      <object>objects\obj_replay</object>
-      <object>objects\obj_pause_screen</object>
-      <object>objects\obj_credits</object>
-      <object>objects\obj_init</object>
-      <object>objects\obj_cursor</object>
       <object>objects\obj_checkpoint</object>
-      <object>objects\obj_test</object>
       <object>objects\obj_proj_aim</object>
+      <object>objects\obj_projectile</object>
+      <object>objects\obj_title</object>
+      <object>objects\obj_pause_screen</object>
+      <object>objects\obj_highscores</object>
+      <object>objects\obj_gui_score</object>
       <object>objects\obj_main_menu</object>
+      <object>objects\obj_init</object>
+      <object>objects\obj_credits_menu</object>
+      <object>objects\obj_test</object>
+      <object>objects\obj_cursor</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -158,8 +178,9 @@
     <room>rooms\rm_level2</room>
     <room>rooms\rm_level3</room>
     <room>rooms\rm_level4</room>
+    <room>rooms\rm_credits</room>
+    <room>rooms\rm_score</room>
     <room>rooms\rm_test</room>
-    <room>rooms\credits</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

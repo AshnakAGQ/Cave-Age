@@ -3,7 +3,7 @@
   <spriteName>spr_projectile</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -29,8 +29,8 @@
 
 max_spd = 20;
 
-var spd = point_distance(x, y, mouse_x, mouse_y) * .1;
-var dir = point_direction(x, y, mouse_x, mouse_y);
+var spd = point_distance(x, y, obj_cursor.x, obj_cursor.y) * .1;
+var dir = point_direction(x, y, obj_cursor.x, obj_cursor.y);
 
 if (spd &gt; max_spd) spd = max_spd;
 

@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-3000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -29,9 +29,8 @@
 
 // Array for all menu options
 menu[0] = "Play";
-menu[1] = "Level Select";
-menu[2] = "Options";
-menu[3] = "Quit";
+menu[1] = "High Scores";
+menu[2] = "Quit";
 
 // Formatting
 vSpace = 64;    // Vertical space between menu items
